@@ -1,13 +1,3 @@
-<p>Users List</p>
-<h1>Map operator example</h1>
-<div>
-    <li *ngFor = "let user of users">
-       {{user | json}}
-    </li>
-</div>
-<h2>Filter operator example</h2>
-<div>
-    <li *ngFor = "let post of posts">
-        {{post | json }}
-    </li>
-</div>
+<li *ngFor="let user of users">
+    {{ user | json }}
+</li>

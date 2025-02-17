@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
+import { User } from '../models/user.model';
 import { RxjsService } from '../rxjs.service';
 import { JsonPipe, NgFor } from '@angular/common';
-import { filter, map } from 'rxjs/operators';
-import { User } from '../models/user.model';
-import { Post } from '../models/post.model';
+
 
 @Component({
   selector: 'app-rxjs',
@@ -12,18 +11,15 @@ import { Post } from '../models/post.model';
   styleUrl: './rxjs.component.css'
 })
 export class RxjsComponent {
-  users: Array<User> = [];
-  posts: Array<Post> = [];
+  users: User[] = [];
 
-  constructor(private rxJsService: RxjsService){}
+  constructor(private _rxjsService: RxjsService){
+
+  }
 
   ngOnInit(){
-    this.rxJsService.setUsers().subscribe((res)=>{
+    this._rxjsService.getUsers().subscribe(res=>{
       this.users = res;
-    });
-
-    this.rxJsService.getPosts().subscribe((res)=>{
-      this.posts = res;
     })
   }
 }
