@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { filter, map, mergeMap, take } from 'rxjs/operators';
 import { User } from './models/user.model';
@@ -9,7 +9,7 @@ import { User } from './models/user.model';
 })
 export class RxjsService {
 
-  constructor(private _http: HttpClient) { }
+  private _http = inject(HttpClient);
 
   getUsers() : Observable<User[]>{
     return this._http.get("https://dummyjson.com/users").pipe(

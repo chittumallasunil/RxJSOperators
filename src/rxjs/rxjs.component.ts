@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { User } from '../models/user.model';
 import { RxjsService } from '../rxjs.service';
 import { JsonPipe, NgFor } from '@angular/common';
@@ -13,9 +13,7 @@ import { JsonPipe, NgFor } from '@angular/common';
 export class RxjsComponent {
   users: User[] = [];
 
-  constructor(private _rxjsService: RxjsService){
-
-  }
+  private _rxjsService = inject(RxjsService);
 
   ngOnInit(){
     this._rxjsService.getUsers().subscribe(res=>{
